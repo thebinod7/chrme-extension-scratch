@@ -3,6 +3,16 @@
     "description": "Build an Extension!",
     "version": "1.0",
     "manifest_version": 3,
+    "permissions": ["storage", "tabs"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://*.com/*"],
+        "js": ["contentScript.js"]
+      }
+    ],
     "action": {
       "default_popup": "popup.html"
     }
