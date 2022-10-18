@@ -10,7 +10,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js',
+    filename: '[name].js', 
   },
   devServer: {
     port:3030,
@@ -21,7 +21,12 @@ module.exports = {
         options: {
             presets: ['@babel/preset-env', '@babel/preset-react']
         }
-    } }],
+    } },
+    {
+      test: /\.(sa|sc|c)ss$/, // styles files
+      use: ["style-loader", "css-loader", "sass-loader"],
+    },
+  ],
   },
   plugins: [new HtmlWebpackPlugin({
     template: path.join(__dirname, "public", "index.html"),
