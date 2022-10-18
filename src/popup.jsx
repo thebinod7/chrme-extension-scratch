@@ -1,12 +1,14 @@
 import React from 'react';
-import {render} from 'react-dom';
+import { createRoot } from "react-dom/client";
+
+const root = createRoot(document.getElementById("root"));
 
 function Popup(){
     return (
         <div>
-            <h1>Hello worldy!</h1>
+            <h1>I am default popup!</h1>
         </div>
     )
 }
 
-render(<Popup />, document.getElementById("root"))
+root.render(<Popup />)
