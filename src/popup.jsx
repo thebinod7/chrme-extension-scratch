@@ -25,7 +25,7 @@ function Popup() {
                 'Authorization' : access_token
             },
             body: JSON.stringify({
-                'query' : '{ boards (limit:1) {id name} }'
+                'query' : '{ boards (limit:5) {id name} }'
             })
         })
         .then(async(res) => {
