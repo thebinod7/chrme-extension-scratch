@@ -3,10 +3,9 @@ import { Link } from "react-router-dom"
 
 const APP_CLIENT_ID = process.env.APP_CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
-
-const AUTH_URL = `https://auth.monday.com/oauth2/authorize?client_id=${APP_CLIENT_ID}`;
-const ACCESS_TOKEN_ENDPOINT = 'https://auth.monday.com/oauth2/token';
-const MONDAY_API_ENDPOINT = 'https://api.monday.com/v2';
+const MONDAY_AUTH_URL = process.env.MONDAY_AUTH_URL;
+const ACCESS_TOKEN_ENDPOINT = process.env.ACCESS_TOKEN_ENDPOINT;
+const MONDAY_API_ENDPOINT = process.env.MONDAY_API_ENDPOINT;
 
 export default function Home() {
 
@@ -48,7 +47,7 @@ export default function Home() {
     };
 
     const handleConnectMonday = () => {
-        chrome.identity.launchWebAuthFlow({'url':AUTH_URL,'interactive':true}, function(redirect_url){
+        chrome.identity.launchWebAuthFlow({'url':MONDAY_AUTH_URL,'interactive':true}, function(redirect_url){
             const queryParameters = redirect_url.split("?")[1];
             const urlSearchParams = new URLSearchParams(queryParameters);
             const code = urlSearchParams.get('code');
